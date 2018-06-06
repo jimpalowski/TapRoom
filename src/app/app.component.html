@@ -10,11 +10,11 @@
     {{currentDrink}}
   </h1>
   <ul>
-    <h2 [class]="priorityColor(currentDrink)" *ngFor="let currentDrink of drinks">
+    <h2 *ngFor="let currentDrink of drinks">
       <p>{{currentDrink.name}}</p>
       <p>{{currentDrink.brand}}</p>
-      <p [class]="priceColor(currentDrink)">{{currentDrink.price}}</p>
-      <p>{{currentDrink.alcoholContent}}%</p>
+      <p [class]="priceColor(currentDrink)">${{currentDrink.price}}</p>
+      <p [class]="levelColor(currentDrink)">{{currentDrink.alcoholContent}}%</p>
       <h3>Pints: {{currentDrink.pints}}</h3>
     <button class="btn btn-primary"(click)="editDrink(currentDrink)">Edit!</button>
     <button class="btn btn-primary"(click)="pourDrink(currentDrink)">Take a Drink</button></h2>

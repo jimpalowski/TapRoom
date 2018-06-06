@@ -9,8 +9,9 @@ import { Keg } from './models/keg.model';
 export class AppComponent {
   currentTitle = 'Bar';
   drinks : Keg[] = [
-    new Keg('Chelada Clamato', 'BudLight', 3.99, 4.5, 3, 124),
-    new Keg('Light orange', 'Carlsberg', 5.99, 3.5, 1, 124),
+    new Keg('Chelada Clamato', 'BudLight', 3.99, 12, 3, 124),
+    new Keg('Light orange', 'Carlsberg', 5.99, 56, 1, 124),
+    new Keg('Patrong', 'Tequila', 1.99, 50, 1, 124),
   ];
   selectedDrink = null;
   priorityColor(currentDrink){
@@ -33,6 +34,15 @@ export class AppComponent {
     }
   }
 
+  levelColor(currentDrink){
+    if(currentDrink.alcoholContent >= 50){
+      return "bg-danger";
+    } else if (currentDrink.alcoholContent <= 49 && currentDrink.alcoholContent >= 25){
+        return "bg-warning";
+    } else {
+      return "bg-info";
+    }
+  }
 
   editDrink(currentDrink) {
     this.selectedDrink = currentDrink;
