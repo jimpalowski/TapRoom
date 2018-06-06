@@ -9,21 +9,14 @@ import { Keg } from './models/keg.model';
 export class AppComponent {
   currentTitle = 'Bar';
   drinks : Keg[] = [
-    new Keg('Chelada Clamato', 'BudLight', 3.99, 12, 3, 124),
-    new Keg('Light orange', 'Carlsberg', 5.99, 56, 1, 124),
-    new Keg('Patrong', 'Tequila', 1.99, 50, 1, 124),
+    new Keg('Chelada Clamato', 'BudLight', 3.99, 12, 124),
+    new Keg('Light orange', 'Carlsberg', 5.99, 56, 124),
+    new Keg('Patrong', 'Tequila', 1.99, 50, 124),
   ];
   selectedDrink = null;
-  priorityColor(currentDrink){
-    if(currentDrink.priority === 3){
-      return "bg-danger";
-    } else if (currentDrink.priority === 2){
-      return "bg-warning";
-    }else {
-      return "bg-info";
-    }
-  }
 
+  orderKeg = null;
+  orders : Keg[] = [];
   priceColor(currentDrink){
     if(currentDrink.price > 5){
       return "bg-danger";
@@ -42,6 +35,11 @@ export class AppComponent {
     } else {
       return "bg-info";
     }
+  }
+
+
+  orderedKeg(orders){
+    this.orderKeg = orders;
   }
 
   editDrink(currentDrink) {
